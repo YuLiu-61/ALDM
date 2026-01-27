@@ -7,8 +7,8 @@ This repository is based on [`softclt`](https://github.com/seunghan96/softclt)an
 ![Framework](./asset/ALDM.png)
 
 ## Main results
-![Results](./asset/results2.png)
-![Results](./asset/results1.png)
+<img src="./asset/results2.png" width="200" />
+<img src="./asset/results1.png" width="500" />
 
 ## Requirements
 * matplotlib==3.7.5
