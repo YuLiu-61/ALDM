@@ -4,7 +4,7 @@ This repository provides a PyTorch implementation of ALDM, which is the unsuperv
 This repository is based on [`softclt`](https://github.com/seunghan96/softclt)and[`MTGFLOW`](https://github.com/zqhang/MTGFLOW).
 
 ## Framework
-![Framework](.\asset\ALDM.png)
+![Framework](./asset/ALDM.png)
 
 ## Main results
 ![Results](./asset/results2.png)
