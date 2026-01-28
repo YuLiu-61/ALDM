@@ -1,16 +1,36 @@
-# Adaptive Latent Distribution Modeling for Industrial Time Series Anomaly Detection (T-ASE)
+<h2 align="center">Adaptive Latent Distribution Modeling for Industrial Time Series Anomaly Detection</h2>
+<p align="center">
+    <!-- <a href="https://github.com/lyuwenyu/RT-DETR/blob/main/LICENSE">
+        <img alt="license" src="https://img.shields.io/badge/LICENSE-Apache%202.0-blue">
+    </a> -->
+    <a href="https://github.com/YuLiu-61/ALDM/blob/master/LICENSE">
+        <img alt="license" src="https://img.shields.io/github/license/YuLiu-61/ALDM">
+    </a>
+    <a href="https://github.com/YuLiu-61/ALDM/pulls">
+        <img alt="prs" src="https://img.shields.io/github/issues-pr/YuLiu-61/ALDM">
+    </a>
+    <a href="https://github.com/YuLiu-61/ALDM/issues">
+        <img alt="issues" src="https://img.shields.io/github/issues/YuLiu-61/ALDM?color=pink">
+    </a>
+    <a href="https://github.com/YuLiu-61/ALDM">
+        <img alt="issues" src="https://img.shields.io/github/stars/YuLiu-61/ALDM">
+    </a>
+</p>
 
-This repository provides a PyTorch implementation of ALDM, which is the unsupervised anomaly detection method. 
-This repository is based on [`softclt`](https://github.com/seunghan96/softclt)and[`MTGFLOW`](https://github.com/zqhang/MTGFLOW).
+---
 
-## Framework
+
+This is the official implementation of the paper "[Adaptive Latent Distribution Modeling for Industrial Time Series Anomaly Detection](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8856)" which has been accepted for publication in the IEEE Transactions on Automation Science and Engineering (T-ASE).
+
+
+## 💡 Framework
 ![Framework](./asset/ALDM.png)
 
-## Main results
+## 🌋 Main results
 <img src="./asset/results2.png" width="450" />
 <img src="./asset/results1.png" width="900" />
 
-## Requirements
+## 🏕️ Requirements
 * matplotlib==3.7.5
 * numpy==1.24.3
 * pandas==2.0.3
@@ -24,7 +44,7 @@ This repository is based on [`softclt`](https://github.com/seunghan96/softclt)an
 pip install -r requirements.txt
 ```
 
-## Data
+## 📍 Data
 We test our method for four public datasets, e.g., ```SWaT```, ```TEPE```, ```PSM```,and ```MSL```
 
 [`SWaT`](https://itrust.sutd.edu.sg/itrust-labs_datasets/dataset_info/#swat) 
@@ -35,7 +55,7 @@ cd Dataset
 mkdir input
 ```
 Download the dataset in ```Data/input```.
-## Train
+## 🔥 Train
 - train for ALDM
 ```sh
 For example, training for SWaT
@@ -52,12 +72,16 @@ We report the results by the implementations in the following links:
 [`MTGFLOW`](https://github.com/zqhang/MTGFLOW),[`USAD`](https://github.com/manigalati/usad) and [`DAGMM`](https://github.com/danieltan07/dagmm/)
 
 
-## Test
+## 🚀 Test
 
 For example, testing for SWaT 
 ```sh
 sh runners/run_SWaT_test.sh
 ```
+
+## Acknowledgement
+Some of the code in this repository is based on [`softclt`](https://github.com/seunghan96/softclt)and[`MTGFLOW`](https://github.com/zqhang/MTGFLOW).
+
 ## BibTex Citation
 
 If you find this paper and repository useful, please cite our paper.
@@ -66,7 +90,7 @@ If you find this paper and repository useful, please cite our paper.
 @article{liu2026aldm,
   title={Adaptive Latent Distribution Modeling for Industrial Time Series Anomaly Detection},
   author={Liu, Yu and Song, Yifan and Shu, Shaolong and Lin, Feng and Wang, Jun and Guo, Yafeng},
-  journal={IEEE Transactions on Automation and Science and Engineering},
+  journal={IEEE Transactions on Automation Science and Engineering},
   year={2026},
   publisher={IEEE}
 }
