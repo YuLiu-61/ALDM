@@ -20,15 +20,16 @@
 ---
 
 
-This is the official implementation of the paper "[Adaptive Latent Distribution Modeling for Industrial Time Series Anomaly Detection](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8856)" which has been accepted for publication in the IEEE Transactions on Automation Science and Engineering (T-ASE).
+<!-- This is the official implementation of the paper "[Adaptive Latent Distribution Modeling for Industrial Time Series Anomaly Detection](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8856)" which has been accepted for publication in the IEEE Transactions on Automation Science and Engineering (T-ASE). -->
+This is the official implementation of the paper "Adaptive Latent Distribution Modeling for Industrial Time Series Anomaly Detection".
 
 
 ## 💡 Framework
 ![Framework](./asset/ALDM.png)
 
-## 🌋 Main results
+<!-- ## 🌋 Main results
 <img src="./asset/results2.png" width="450" />
-<img src="./asset/results1.png" width="900" />
+<img src="./asset/results1.png" width="900" /> -->
 
 ## 🏕️ Requirements
 * matplotlib==3.7.5
