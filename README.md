@@ -80,10 +80,10 @@ For example, testing for SWaT
 sh runners/run_SWaT_test.sh
 ```
 
-## Acknowledgement
-Some of the code in this repository is based on [`softclt`](https://github.com/seunghan96/softclt)and[`MTGFLOW`](https://github.com/zqhang/MTGFLOW).
+<!-- ## Acknowledgement
+Some of the code in this repository is based on [`softclt`](https://github.com/seunghan96/softclt)and[`MTGFLOW`](https://github.com/zqhang/MTGFLOW). -->
 
-## BibTex Citation
+<!-- ## BibTex Citation
 
 If you find this paper and repository useful, please cite our paper.
 
@@ -95,7 +95,7 @@ If you find this paper and repository useful, please cite our paper.
   year={2026},
   publisher={IEEE}
 }
-```
+``` -->
 
 
 
