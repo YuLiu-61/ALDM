@@ -1,4 +1,8 @@
-Dataset/Data/
+Dataset/Data/*
+!Dataset/Data/input/
+!Dataset/Data/input/**
+!Dataset/Data/input/processed/
+Dataset/Data/input/TEPE/*
 __pycache__/
 *.pyc
 .idea/

@@ -21,7 +21,7 @@
 
 
 <!-- This is the official implementation of the paper "[Adaptive Latent Distribution Modeling for Industrial Time Series Anomaly Detection](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8856)" which has been accepted for publication in the IEEE Transactions on Automation Science and Engineering (T-ASE). -->
-This is the official implementation of the paper "Adaptive Latent Distribution Modeling for Industrial Time Series Anomaly Detection".
+This is the official implementation of the paper "ALDM for Industrial TSAD". The paper has been accepted for publication in the IEEE Transactions on Automation Science and Engineering (T-ASE).
 
 
 ## 💡 Framework
@@ -83,7 +83,7 @@ sh runners/run_SWaT_test.sh
 <!-- ## Acknowledgement
 Some of the code in this repository is based on [`softclt`](https://github.com/seunghan96/softclt)and[`MTGFLOW`](https://github.com/zqhang/MTGFLOW). -->
 
-<!-- ## BibTex Citation
+## BibTex Citation
 
 If you find this paper and repository useful, please cite our paper.
 
@@ -95,7 +95,7 @@ If you find this paper and repository useful, please cite our paper.
   year={2026},
   publisher={IEEE}
 }
-``` -->
+```
 
 
 
