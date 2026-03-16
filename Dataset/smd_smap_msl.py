@@ -63,11 +63,11 @@ def load_smd_smap_msl(dataset, batch_size = 512, window_size = 60, stride_size =
         f.close()
     except (KeyError, FileNotFoundError):
         test_label = None
-    print('testset size',test_label.shape, 'anomaly ration', sum(test_label)/len(test_label))
+    print('testset size',test_label.shape, 'anomaly ratio', sum(test_label)/len(test_label))
 
     whole_data = test_data
     whole_label = test_label
-    print('testset size',whole_label.shape, 'anomaly ration', sum(whole_label)/len(whole_label))
+    print('testset size',whole_label.shape, 'anomaly ratio', sum(whole_label)/len(whole_label))
     if do_preprocess:
         whole_data = preprocess(whole_data)
    
@@ -91,8 +91,9 @@ def load_smd_smap_msl(dataset, batch_size = 512, window_size = 60, stride_size =
     test_df = whole_data[int(train_split*len(whole_data)):]
     test_label = whole_label[int(train_split*len(whole_data)):]
 
-    print('train size',train_label.shape, 'anomaly ration', sum(train_label)/len(train_label))
-    print('test size',test_label.shape, 'anomaly ration', sum(test_label)/len(test_label))
+    print('train size',train_label.shape, 'anomaly ratio', sum(train_label)/len(train_label))
+    print('val size',val_label.shape, 'anomaly ratio', sum(val_label)/len(val_label))
+    print('test size',test_label.shape, 'anomaly ratio', sum(test_label)/len(test_label))
 
 
     if label:
@@ -152,7 +153,7 @@ def load_smd_smap_msl_occ(dataset, batch_size = 512, window_size = 60, stride_si
   
     test_df = test_data[int(train_split*len(test_data)):]
     test_label = test_label[int(train_split*len(test_data)):]
-    print('testset size',test_label.shape, 'anomaly ration', sum(test_label)/len(test_label))
+    print('testset size',test_label.shape, 'anomaly ratio', sum(test_label)/len(test_label))
 
     if label:
         train_loader = DataLoader(Smd_smap_msl_dataset(train_df,train_label, window_size, stride_size), batch_size=batch_size, shuffle=False)
@@ -217,7 +218,7 @@ class Smd_smap_msl_dataset(Dataset):
         return length   
 
     def __getitem__(self, index):
-        #  N X K X L X D 
+        #  N , K , L , D 
 
         start = self.idx[index]
         end = start + self.window_size

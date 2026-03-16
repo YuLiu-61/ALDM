@@ -20,7 +20,7 @@ parser.add_argument('--output_dir', type=str,
 parser.add_argument('--name',default='SWaT', help='the name of dataset')
 
 parser.add_argument('--graph', type=str, default='None')
-parser.add_argument('--model', type=str, default='MAF')
+parser.add_argument('--model', type=str, default='ALDM')
 
 
 parser.add_argument('--n_blocks', type=int, default=1, help='Number of blocks to stack in a model (MADE in MAF; Coupling+BN in RealNVP).')
@@ -125,7 +125,6 @@ for seed in range(15,16):
     P_ew, R_ew, F1_ew = compute_event_wise_metrics(
         y_true, y_pred, gt_intervals=None)#
     print(f"P_ew: {P_ew}, R_ew: {R_ew}, F1_ew: {F1_ew}")
-
 
 
 

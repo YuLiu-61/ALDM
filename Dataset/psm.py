@@ -33,12 +33,14 @@ def loader_PSM(root, batch_size, window_size, stride_size,train_split,label=Fals
 
     val_df = norm_feature.iloc[int(0.6*len(data)):int(0.8*len(data))]
     val_label = labels[int(0.6*len(data)):int(0.8*len(data))]
-    
+    print('valset size',val_df.shape, 'anomaly ratio', sum(val_label)/len(val_label))
+
+
 
     test_df = norm_feature.iloc[int(train_split*len(data)):]
     test_label = labels[int(train_split*len(data)):]
 
-    print('testset size',test_df.shape, 'anomaly ration', sum(test_label)/len(test_label))
+    print('testset size',test_df.shape, 'anomaly ratio', sum(test_label)/len(test_label))
     if label:
         train_loader = DataLoader(SWat_dataset(train_df,train_label, window_size, stride_size), batch_size=batch_size, shuffle=False)
     else:
@@ -76,7 +78,7 @@ def loader_PSM_OCC(root, batch_size, window_size, stride_size,train_split,label=
  
     train_df = norm_feature.iloc[:]
     train_label = labels[:]
-    print('trainset size',train_df.shape, 'anomaly ration', sum(train_label)/len(train_label))
+    print('trainset size',train_df.shape, 'anomaly ratio', sum(train_label)/len(train_label))
 
     val_df = norm_feature.iloc[int(train_split*len(data)):]
     val_label = labels[int(train_split*len(data)):]
@@ -107,7 +109,7 @@ def loader_PSM_OCC(root, batch_size, window_size, stride_size,train_split,label=
     test_df = norm_feature.iloc[int(train_split*len(data)):]
     test_label = labels[int(train_split*len(data)):]
 
-    print('testset size',test_df.shape, 'anomaly ration', sum(test_label)/len(test_label))
+    print('testset size',test_df.shape, 'anomaly ratio', sum(test_label)/len(test_label))
     if label:
         train_loader = DataLoader(SWat_dataset(train_df,train_label, window_size, stride_size), batch_size=batch_size, shuffle=False)
     else:
@@ -147,7 +149,7 @@ class SWat_dataset(Dataset):
         return length
 
     def __getitem__(self, index):
-        #  N X K X L X D 
+        #  N , K , L , D 
         """
         """
         # print(self.window_size)

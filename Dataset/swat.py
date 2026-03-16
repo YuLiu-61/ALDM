@@ -33,7 +33,7 @@ def loader_SWat(root, batch_size, window_size, stride_size,train_split,label=Fal
     norm_feature = norm_feature.dropna(axis=1)
     train_df = norm_feature.iloc[:int(train_split*len(data))]
     train_label = labels[:int(train_split*len(data))]
-    print('trainset size',train_df.shape, 'anomaly ration', sum(train_label)/len(train_label))
+    print('trainset size',train_df.shape, 'anomaly ratio', sum(train_label)/len(train_label))
 
     val_df = norm_feature.iloc[int(0.6*len(data)):int(train_split*len(data))]
     val_label = labels[int(0.6*len(data)):int(train_split*len(data))]
@@ -41,7 +41,7 @@ def loader_SWat(root, batch_size, window_size, stride_size,train_split,label=Fal
     test_df = norm_feature.iloc[int(train_split*len(data)):]
     test_label = labels[int(train_split*len(data)):]
 
-    print('testset size',test_df.shape, 'anomaly ration', sum(test_label)/len(test_label))
+    print('testset size',test_df.shape, 'anomaly ratio', sum(test_label)/len(test_label))
     if label:
         train_loader = DataLoader(SWat_dataset(train_df,train_label, window_size, stride_size), batch_size=batch_size, shuffle=False)
     else:
@@ -70,7 +70,7 @@ def loader_SWat_OCC(root, batch_size, window_size, stride_size,train_split,label
     norm_feature = norm_feature.dropna(axis=1)
     train_df = norm_feature.iloc[:]
     train_label = labels[:]
-    print('trainset size',train_df.shape, 'anomaly ration', sum(train_label)/len(train_label))
+    print('trainset size',train_df.shape, 'anomaly ratio', sum(train_label)/len(train_label))
 
     val_df = norm_feature.iloc[int(train_split*len(data)):]
     val_label = labels[int(train_split*len(data)):]
@@ -96,7 +96,7 @@ def loader_SWat_OCC(root, batch_size, window_size, stride_size,train_split,label
     test_df = norm_feature.iloc[int(0.8*len(data)):]
     test_label = labels[int(0.8*len(data)):]
 
-    print('testset size',test_df.shape, 'anomaly ration', sum(test_label)/len(test_label))
+    print('testset size',test_df.shape, 'anomaly ratio', sum(test_label)/len(test_label))
     if label:
         train_loader = DataLoader(SWat_dataset(train_df,train_label, window_size, stride_size), batch_size=batch_size, shuffle=False)
     else:
@@ -131,7 +131,7 @@ class SWat_dataset(Dataset):
         return length
 
     def __getitem__(self, index):
-        #  N X K X L X D 
+        #  N , K , L , D 
         """
         """
         start = self.idx[index]

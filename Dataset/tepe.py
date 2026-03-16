@@ -30,7 +30,7 @@ def loader_tepe(root, batch_size, window_size, stride_size, train_split, label=F
 
     train_df = norm_feature.iloc[:int(train_split * len(data))]
     train_label = labels[:int(train_split * len(data))]
-    print('trainset size', train_df.shape, 'anomaly ration', sum(train_label) / len(train_label))
+    print('trainset size', train_df.shape, 'anomaly ratio', sum(train_label) / len(train_label))
     # 异常标签占总标签的比例
 
     val_df = norm_feature.iloc[int(0.6 * len(data)):int(train_split * len(data))]
@@ -38,7 +38,7 @@ def loader_tepe(root, batch_size, window_size, stride_size, train_split, label=F
 
     test_df = norm_feature.iloc[int(train_split * len(data)):]
     test_label = labels[int(train_split * len(data)):]
-    print('testset size', test_df.shape, 'anomaly ration', sum(test_label) / len(test_label))
+    print('testset size', test_df.shape, 'anomaly ratio', sum(test_label) / len(test_label))
 
 
     if label:
@@ -82,7 +82,7 @@ class SWat_dataset(Dataset):
         return length
 
     def __getitem__(self, index):
-        #  N X K X L X D
+        #  N , K , L , D
         """
         """
         start = self.idx[index]

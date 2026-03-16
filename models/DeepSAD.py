@@ -147,7 +147,6 @@ class DeepSVDDTrainer:
         return net
 
     def test(self, net, test_loader, delta_t, sigma, device):
-            from utils import roc_auc_all
             import numpy as np
             net.eval()
             net.to(device)
@@ -231,7 +230,6 @@ class DeepSVDD(object):
 
     # def test(self, test_loader, delta_t, sigma, device):
     def test(self, test_loader, c, sigma, device):
-        from utils import roc_auc_all
         import numpy as np
         self.net.eval()
         self.net.to(device)
@@ -380,7 +378,6 @@ class DeepSADTrainer:
         return net
 
     def test(self, net, test_loader, delta_t, sigma, device):
-            from utils import roc_auc_all
             import numpy as np
             net.eval()
             net.to(device)
@@ -455,7 +452,6 @@ class DeepSAD(object):
 
     # def test(self, test_loader, delta_t, sigma, device):
     def test(self, test_loader, c, sigma, device):
-        from utils import roc_auc_all
         import numpy as np
         self.net.eval()
         self.net.to(device)

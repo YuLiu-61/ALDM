@@ -133,8 +133,11 @@ class ALDM(nn.Module):
 
         self.rnn = nn.LSTM(input_size=input_size,hidden_size=hidden_size,batch_first=True, dropout=dropout)
         self.gcn = GNN(input_size=hidden_size, hidden_size=hidden_size)
-        if model=="MAF":
+        flow_model = str(model).upper()
+        if flow_model == "ALDM":
             self.nf = MAF(n_blocks, n_sensor, input_size, hidden_size, n_hidden, cond_label_size=hidden_size, batch_norm=batch_norm,activation='tanh')
+        else:
+            raise ValueError(f"Unsupported flow model: {model}")
         self.scl=TS2Vec(input_dims=n_sensor, output_dims=outdim_scl, hidden_dims=hiddendim_scl,soft_instance=soft_instance,soft_temporal=soft_temporal, depth=10)
         self.attention = ScaleDotProductAttention(window_size*input_size)
         self.linear=nn.Linear(outdim_scl,n_sensor)

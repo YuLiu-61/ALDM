@@ -8,8 +8,8 @@ class SPDLayer(nn.Module):
     def __init__(self, in_features, out_features):
         super(SPDLayer, self).__init__()
 
-        self.L = nn.Parameter(torch.tril(torch.randn(out_features, in_features)).cuda())
-        self.D = nn.Parameter(torch.diag_embed(torch.rand(out_features)).cuda())
+        self.L = nn.Parameter(torch.tril(torch.randn(out_features, in_features)))
+        self.D = nn.Parameter(torch.diag_embed(torch.rand(out_features)))
 
     def forward(self, x):
         # W = L * D * L^T
@@ -33,8 +33,8 @@ def compute_cosine_similarity(x):
 
     batch_size, seq_len, feature_dim = x.size()
 
-    distance_matrix = torch.zeros((batch_size, seq_len, seq_len))
-    model=SPDLayer(feature_dim,feature_dim)
+    distance_matrix = torch.zeros((batch_size, seq_len, seq_len), device=x.device, dtype=x.dtype)
+    model = SPDLayer(feature_dim, feature_dim).to(x.device)
 
     for b in range(batch_size):
 
@@ -95,4 +95,3 @@ def timelag_sigmoid_threshold(T, threshold=1.0):
     return dist
 
 ##############################################################################
-

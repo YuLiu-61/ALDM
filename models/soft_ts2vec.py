@@ -1,15 +1,17 @@
 from models.soft_losses import *
 from utils import *
 from models.encoder import TSEncoder
-from scipy.spatial.distance import euclidean
 from sklearn.metrics.pairwise import cosine_similarity
 import matplotlib.pyplot as plt
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
 class SPDLayer(nn.Module):
     def __init__(self, in_features, out_features):
         super(SPDLayer, self).__init__()
 
-        self.L = nn.Parameter(torch.tril(torch.randn(out_features, in_features)).cuda())
-        self.D = nn.Parameter(torch.diag_embed(torch.rand(out_features)).cuda())
+        self.L = nn.Parameter(torch.tril(torch.randn(out_features, in_features)))
+        self.D = nn.Parameter(torch.diag_embed(torch.rand(out_features)))
 
     def forward(self, x):
 
@@ -42,9 +44,9 @@ def compute_metric_learning(x):
     # x: (B, T, dimension of metric learning)
 
     batch_size, seq_len, feature_dim = x.size()
-    distance_matrix = torch.zeros((batch_size, seq_len, seq_len))#B,T,T
+    distance_matrix = torch.zeros((batch_size, seq_len, seq_len), device=x.device, dtype=x.dtype)#B,T,T
 
-    model=SPDLayer(feature_dim,feature_dim) #Chlosky Decomposition
+    model = SPDLayer(feature_dim, feature_dim).to(x.device) #Chlosky Decomposition
 
     for b in range(batch_size):
 
@@ -80,14 +82,14 @@ def timelag_sigmoid(T,sigma=1):
 
 def timelag_cosine(x, sigma=1):
     batch_size, seq_len, feature_dim = x.size()
-    matrix = torch.zeros((batch_size, seq_len, seq_len))#B,T,T
+    matrix = torch.zeros((batch_size, seq_len, seq_len), device=x.device, dtype=x.dtype)#B,T,T
 
     for b in range(batch_size):
 
         x_batch = x[b].cpu().detach().numpy()
         similarity_matrix = cosine_similarity(x_batch)
         matrix[b] = torch.tensor(similarity_matrix).to(x.device)
-    matrix = np.where(matrix < 1e-6, 0, matrix)
+    matrix = torch.where(matrix < 1e-6, torch.zeros_like(matrix), matrix)
 
     return matrix
 
@@ -147,7 +149,7 @@ class TS2Vec(nn.Module):
         input_dims, output_dims=320, hidden_dims=128,
         soft_instance=False,
         soft_temporal=True,
-        depth=10, device='cuda',
+        depth=10, device=None,
         lambda_ = 0.5, tau_temp = 1,
         temporal_unit=0,
 
@@ -158,10 +160,10 @@ class TS2Vec(nn.Module):
         self.tau_temp = tau_temp
         self.lambda_ = lambda_
         self.temporal_unit = temporal_unit
-        self._net = TSEncoder(input_dims=input_dims, output_dims=output_dims, hidden_dims=hidden_dims, depth=depth).to(self.device)
+        self._net = TSEncoder(input_dims=input_dims, output_dims=output_dims, hidden_dims=hidden_dims, depth=depth)
         self.soft_instance = soft_instance
         self.soft_temporal = soft_temporal
-        self.SPD=SPDLayer(128,128)
+        self.SPD = SPDLayer(128, 128)
     
     def fit(self, train_data,z,soft_labels):
         ''' Training the TS2Vec model.

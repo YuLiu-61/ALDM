@@ -57,10 +57,10 @@ Notes:
 Train ALDM on SWaT:
 
 ```sh
-python -u train.py --name SWaT --model ALDM --lr 0.002 --batch_size 512 --num_epochs 100
+python -u main.py --name SWaT --model ALDM --lr 0.002 --batch_size 512 --epochs 100
 ```
 
-Train baselines (```DeepSVDD```, ```DeepSAD```, ```DROCC```, and ```ALOCC```):
+Train baselines (```DeepSVDD```, ```DeepSAD```):
 
 ```sh
 python train_other_model.py --name SWaT --model DeepSVDD

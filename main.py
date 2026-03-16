@@ -13,7 +13,7 @@ parser.add_argument('--output_dir', type=str,
 parser.add_argument('--name',default='SWaT', help='the name of dataset',choices=["SWaT", "MSL", "PSM", "TEPE"])
 
 parser.add_argument('--graph', type=str, default='None')
-parser.add_argument('--model', type=str, default='MAF')
+parser.add_argument('--model', type=str, default='ALDM')
 
 
 parser.add_argument('--n_blocks', type=int, default=1, help='Number of blocks to stack in a model (MADE in MAF; Coupling+BN in RealNVP).')
@@ -147,5 +147,4 @@ for seed in range(15,20):
 
         roc_max = max(roc_test, roc_max)
         print(roc_max)
-
 
