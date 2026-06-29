@@ -82,11 +82,13 @@ sh runners/run_SWaT_test.sh
 If you find this work useful, please cite:
 
 ```
-@article{liu2026aldm,
-  title={Adaptive Latent Distribution Modeling for Industrial Time Series Anomaly Detection},
+@ARTICLE{liu2026aldm,
   author={Liu, Yu and Song, Yifan and Shu, Shaolong and Lin, Feng and Wang, Jun and Guo, Yafeng},
-  journal={IEEE Transactions on Automation Science and Engineering},
+  journal={IEEE Transactions on Automation Science and Engineering}, 
+  title={Adaptive Latent Distribution Modeling for Industrial Time Series Anomaly Detection}, 
   year={2026},
-  publisher={IEEE}
-}
+  volume={23},
+  number={},
+  pages={7893-7907},
+  doi={10.1109/TASE.2026.3674236}}
 ```
